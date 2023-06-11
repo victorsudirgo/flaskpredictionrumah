@@ -184,6 +184,3 @@ def home():
                                                           'Luas Bangunan': lb, 'Garasi': carspaces, 'Lokasi':area, 
                                                           'Methods' :algo},
                                      result=pred)
-
-if __name__ == "__main__":
-     app.run(debug=True)  
