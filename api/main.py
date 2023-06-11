@@ -11,7 +11,7 @@ gb = pickle.load(open("api/GBoosting_Model.pkl", "rb"))
 ada = pickle.load(open("api/AdaBoost_Model.pkl", "rb"))
 
 
-app.route("/test_link")
+app.route("/api/test_link")
 def test_link():
     return render_template('test_link.html')
 
@@ -19,7 +19,7 @@ def test_link():
 def methods():
     return render_template('methods.html')
 
-@app.route('/test', methods=['GET', 'POST'])
+@app.route('/api/test', methods=['GET', 'POST'])
 def test():
     if request.method == 'POST':
         # do stuff when the form is submitted
@@ -40,7 +40,7 @@ def test():
     # show the form, it wasn't submitted
     #return render_template('homepage.html')
 
-@app.route("/", methods=['GET', 'POST'])
+@app.route("/api", methods=['GET', 'POST'])
 def home():
     area_arr = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
