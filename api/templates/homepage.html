@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous"
+    />
+      <!-- <link rel="stylesheet" type="text/css" href="/static/style.css"> -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+      <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        crossorigin="anonymous"
+     />
+     <script type = "text/javascript"  src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+     <script type = "text/javascript"  src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+     <style>
+        body{
+          height: 100vh;
+          background: #0062E6 !important;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .card{
+          overflow: hidden;
+          border: 0 !important;
+          border-radius: 20px !important;
+          box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .card-body{
+          overflow: hidden;
+          border: 0 !important;
+          border-radius: 20px !important;
+          box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+          float:left;
+          width:1000px;
+          overflow-y: auto;
+          overflow-x: auto;
+          height: 600px;
+        }
+
+        /* .img-left{
+          width: 45%;
+          background: url('img.jpg') center;
+          background-size: cover;
+        } */
+
+        .navheader{
+          position: relative;
+          margin-top: 100px;
+          margin-bottom: 20px;
+          background-color: white;
+          border-radius: 20px !important;
+        }
+
+
+        .navheader a {
+          float: left;
+          color: #007bff;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+          font-size: 17px;
+          border-radius: 20px !important;
+        }
+
+        .navheader a:hover {
+          background-color: black;
+          color: #007bff;
+          text-decoration: none;
+        }
+
+        .card-body{
+          padding: 2rem;
+        }
+
+        .title{
+          margin-bottom: 2rem;
+        }
+
+        .data{
+            padding:10px;
+        }
+        
+     </style>
+    </head>
+
+    <body>
+      <div class="name">
+        Prediksi Harga Rumah Tangerang Selatan
+        </div>
+        <div class="navheader">
+            <a class="active" href="{{ url_for('test') }}">Home</a>
+            <a href="{{ url_for('methods') }}">Methods</a>
+            <a href="{{ url_for('home') }}">Prediction</a>
+          </div>
+        <div class="container">
+            <div class="row px-3">
+              <div class="col-lg-10 col-xl-9 card flex-row mx-auto px-0">
+                <div class="img-left d-none d-md-flex"></div>
+                
+                
+                <div class="card-body">
+                  <div class="mt-4">
+                      <table id="tables" class="display table responsive" style="width: 100%">
+                        <thead>
+                          <tr>
+                            {% for header in results[0].keys() %}
+                            <th>{{header}}</th>
+                            {% endfor %}
+                          </tr>
+                          </thead>
+                          <tbody>
+                            {% for row in results %}
+                            <tr>  
+                              <td>{{row['title']}}</td>
+                              <td>{{row['bedrooms']}}</td>
+                              <td>{{row['bathrooms']}}</td>
+                              <td>{{row['carspaces']}}</td>
+                              <td>{{row['land_size']}}</td>
+                              <td>{{row['building_size']}}</td>
+                              <td>{{row['multiple_floor']}}</td>
+                              <td>{{row['issecurity']}}</td>
+                              <td>{{row['isgarden']}}</td>
+                              <td>{{row['isbalcony']}}</td>
+                              <td>{{row['iscourtyard']}}</td>
+                              <td>{{row['lokasi']}}</td>
+                              <td>{{row[' harga ']}}</td>
+                            </tr>
+                            {% endfor %}
+                          </tbody>
+                      </table>
+                  </div>
+                    
+                </div>
+              </div>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript">
+      $(this.#tables).DataTable();
+    </script>
+</html>

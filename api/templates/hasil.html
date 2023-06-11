@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        body{
+          height: 100vh;
+          background-color: #007bff !important;
+          background-image: url('image.jpg') !important;
+          background-size: 100% 100% !important;
+          background-repeat: no-repeat !important;
+          background-attachment: fixed !important;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .card{
+          overflow: hidden;
+          border: 0 !important;
+          border-radius: 20px !important;
+          box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+        }
+
+        /* .img-left{
+          width: 45%;
+          background: url('img.jpg') center;
+          background-size: cover;
+        } */
+
+        .navheader{
+          position: relative;
+          margin-top: 100px;
+          margin-bottom: 20px;
+          background-color: white;
+          border-radius: 20px !important;
+        }
+
+        .navheader a {
+          float: left;
+          color: #007bff;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+          font-size: 17px;
+          border-radius: 20px !important;
+        }
+
+        .navheader a:hover {
+          background-color: black;
+          color: #007bff;
+          text-decoration: none
+          
+        }
+
+        .card-body{
+          padding: 2rem;
+        }
+
+        .title{
+          margin-bottom: 2rem;
+        }
+
+        .form-input{
+        position: relative;
+        }
+
+        .form-x{
+          position: relative;
+        }
+
+        .form-x input{
+
+        }
+
+        .form-input input{
+          width: 100%;
+          height: 45px;
+          padding-left: 40px;
+          margin-bottom: 20px;
+          box-sizing: border-box;
+          box-shadow: none;
+          border: 1px solid #00000020;
+          border-radius: 50px;
+          outline: none;
+          background: transparent;
+        }
+
+        .form-input span{
+          position: absolute;
+          top: 10px;
+          padding-left: 15px;
+          color: #007bff;
+        }
+
+        .form-x span{
+          top: 10px;
+          padding-left: 20px;
+          margin-right: 20px;
+          color: #007bff;
+        }
+
+        .form-input input::placeholder{
+          color: black;
+          padding-left: 0px;
+        }
+
+        .form-input input:focus, .form-input input:valid{
+          border: 2px solid #007bff;
+        }
+
+        .form-radio input:focus, .form-radio input:valid{
+          border: 2px solid #007bff;
+        }
+
+        .result{
+           text-align: center;
+
+        }
+
+
+        /* .form-input input:focus::placeholder{
+          color: #454b69;
+        }
+
+        .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before{
+          background-color: #007bff !important;
+          border: 0px;
+        } */
+
+
+
+
+        </style>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous"
+    />
+      <!-- <link rel="stylesheet" type="text/css" href="/static/style.css"> -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+      <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        crossorigin="anonymous"
+     />
+     <title>{% block title %} Home {% endblock %}</title>
+    </head>
+
+    
+    <body>
+      <div class="navheader">
+        <a class="active" href="{{ url_for('test') }}">Home</a>
+        <a href="{{ url_for('methods') }}">Methods</a>
+        <a href="{{ url_for('home') }}">Prediction</a>
+      </div>
+        <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbar"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button> -->
+            
+            <!-- <div class="collapse navbar-collapse" id="navbar">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" id="login" href="/login">Login</a>
+                    <a class="nav-item nav-link" id="signUP" href="/sign-up">Sign Up</a>
+                    <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
+                    <a class="nav-item nav-link" id="home" href="/home">Home</a>
+                </div>
+            </div>
+        </nav> -->
+        <div class="container">
+          <div class="row px-3">
+            <div class="col-lg-10 col-xl-9 card flex-row mx-auto px-0">
+              <div class="img-left d-none d-md-flex"></div>
+        
+              <div class="card-body">
+                <h4 class="title text-center mt-4">
+                  South Tangerang House Prediction
+                </h4>
+
+                <div class="result">
+                    {% if result %} {% for variable, value in original_input.items() %}
+                    <b>{{ variable }}</b> : {{ value }} {% endfor %}
+                    <br>
+                    <br>
+                    <h1>Predicted House Price:</h1>
+                    <p style="font-size:50px">Rp.{{ result }}</p>
+                    {% endif %}
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        {% block content %}
+        {% endblock %}
+        </div>
+
+        <script
+        src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"
+      ></script>
+      <script
+          type="text/javascript"
+          src="{{url_for('static', filename='index.js')}}"
+          ></script>
+
+    </body>
+</html>
