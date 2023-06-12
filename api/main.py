@@ -7,7 +7,7 @@ import csv
 app = Flask(__name__, template_folder='templates')
 
 rf = open("api/RF_Model.pkl", "rb")
-rf_model = pickle.load(rf)
+#rf_model = pickle.load(rf)
 #model = pickle.load(open("api/RF_Model.pkl", "rb"))
 #gb = pickle.load(open("api/GBoosting_Model.pkl", "rb"))
 #ada = pickle.load(open("api/AdaBoost_Model.pkl", "rb"))
