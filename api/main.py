@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import csv
 
-app = Flask(__name__, template_folder='templates')
+app = Flask(__name__, template_folder='api/templates')
 
 model = pickle.load(open("api/RF_Model.pkl", "rb"))
 gb = pickle.load(open("api/GBoosting_Model.pkl", "rb"))
@@ -28,7 +28,7 @@ def test():
         # the redirect can be to the same route or somewhere else
         return redirect(url_for('home'))
     
-    data = pd.read_csv('api/clean_lamudi_tangsel.csv')
+    data = pd.read_csv('clean_lamudi_tangsel.csv')
     datacsv = data.to_dict('records')
     results = []
     for row in datacsv:
@@ -180,9 +180,9 @@ def home():
 
     print(pred)    
     
-    return render_template('api/hasil.html', original_input={'Kamar Tidur': kt, 'Kamar Mandi': km, 'Luas Tanah': lt,
+    return render_template('hasil.html', original_input={'Kamar Tidur': kt, 'Kamar Mandi': km, 'Luas Tanah': lt,
                                                           'Luas Bangunan': lb, 'Garasi': carspaces, 'Lokasi':area, 
                                                           'Methods' :algo},
                                      result=pred)
 if __name__=="__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(debug=True)
