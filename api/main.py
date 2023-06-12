@@ -4,9 +4,9 @@ import numpy as np
 import pandas as pd
 import csv
 
-app = Flask(__name__, template_folder='api/templates')
+app = Flask(__name__, template_folder='templates')
 
-model = pickle.load(open("api/RF_Model.pkl", "rb"))
+#model = pickle.load(open("api/RF_Model.pkl", "rb"))
 gb = pickle.load(open("api/GBoosting_Model.pkl", "rb"))
 ada = pickle.load(open("api/AdaBoost_Model.pkl", "rb"))
 
