@@ -6,11 +6,13 @@ import csv
 
 app = Flask(__name__, template_folder='templates')
 
-rf = open("api/RF_Model.pkl", "rb")
-#rf_model = pickle.load(rf)
-#model = pickle.load(open("api/RF_Model.pkl", "rb"))
-#gb = pickle.load(open("api/GBoosting_Model.pkl", "rb"))
-#ada = pickle.load(open("api/AdaBoost_Model.pkl", "rb"))
+rf_model = open("api/RF_Model.pkl", "rb")
+gb_model = open("api/GBoosting_Model.pkl", "rb")
+ada_model = open("api/AdaBoost_Model.pkl", "rb")
+
+#rf = pickle.load(rf_model)
+#gb = pickle.load(gb_model)
+#ada = pickle.load(ada_model)
 
 
 @app.route("/test_link")
