@@ -11,7 +11,7 @@ gb = pickle.load(open("api/GBoosting_Model.pkl", "rb"))
 ada = pickle.load(open("api/AdaBoost_Model.pkl", "rb"))
 
 
-app.route("/test_link")
+@app.route("/test_link")
 def test_link():
     return render_template('test_link.html')
 
@@ -185,4 +185,4 @@ def home():
                                                           'Methods' :algo},
                                      result=pred)
 if __name__=="__main__":
-    app.run(debug=True, host='127.0.0.1', port=int(os.environ.get("PORT", 5000)))
+    app.run(host="0.0.0.0", port=5000)
