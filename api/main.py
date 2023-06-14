@@ -3,6 +3,7 @@ import pickle
 import numpy as np
 import pandas as pd
 import csv
+from sklearn.ensemble import GradientBoostingRegressor
 
 app = Flask(__name__, template_folder='templates')
 
@@ -11,7 +12,12 @@ gb_model = open("api/GBoosting_Model.pkl", "rb")
 ada_model = open("api/AdaBoost_Model.pkl", "rb")
 
 dataall = open("api/clean_lamudi_tangsel.csv", "rb")
+xTrain = open("api/xTrain.csv", "rb")
+yTrain = open("api/yTrain.csv", "rb")
 
+gb = GradientBoostingRegressor(loss = 'huber', n_estimators = 1000, learning_rate = 0.05, min_samples_split = 10, min_samples_leaf = 5, max_depth = 2, random_state = 42)
+
+gb.fit(xTrain, yTrain)
 
 # rf = pickle.load(rf_model)
 # gb = pickle.load(gb_model)
