@@ -6,15 +6,16 @@ import csv
 
 app = Flask(__name__, template_folder='templates')
 
-rf_model = open("api/RF_Model.pkl", "wb")
-gb_model = open("api/GBoosting_Model.pkl", "wb")
-ada_model = open("api/AdaBoost_Model.pkl", "wb")
+rf_model = open("api/RF_Model.pkl", "rb")
+gb_model = open("api/GBoosting_Model.pkl", "rb")
+ada_model = open("api/AdaBoost_Model.pkl", "rb")
+
+dataall = open("api/clean_lamudi_tangsel.csv", "rb")
 
 
-
-rf = pickle.load(rf_model)
-gb = pickle.load(gb_model)
-ada = pickle.load(ada_model)
+# rf = pickle.load(rf_model)
+# gb = pickle.load(gb_model)
+# ada = pickle.load(ada_model)
 
 
 @app.route("/test_link")
@@ -34,7 +35,7 @@ def test():
         # the redirect can be to the same route or somewhere else
         return redirect(url_for('home'))
     
-    data = pd.read_csv('clean_lamudi_tangsel.csv')
+    data = pd.read_csv(dataall)
     datacsv = data.to_dict('records')
     results = []
     for row in datacsv:
