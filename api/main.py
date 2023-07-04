@@ -41,7 +41,7 @@ def test():
         # the redirect can be to the same route or somewhere else
         return redirect(url_for('home'))
     
-    data = pd.read_csv(dataall)
+    data = pd.read_csv("api/clean_lamudi_tangsel.csv")
     datacsv = data.to_dict('records')
     results = []
     for row in datacsv:
