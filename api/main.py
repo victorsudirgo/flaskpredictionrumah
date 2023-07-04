@@ -11,17 +11,17 @@ rf_model = open("api/RF_Model.pkl", "rb")
 gb_model = open("api/GBoosting_Model.pkl", "rb")
 ada_model = open("api/AdaBoost_Model.pkl", "rb")
 
-dataall = open("api/clean_lamudi_tangsel.csv", "rb")
-xTrain = open("api/xTrain.csv", "rb")
-yTrain = open("api/yTrain.csv", "rb")
+# dataall = open("api/clean_lamudi_tangsel.csv", "rb")
+# xTrain = open("api/xTrain.csv", "rb")
+# yTrain = open("api/yTrain.csv", "rb")
 
-gb = GradientBoostingRegressor(loss = 'huber', n_estimators = 1000, learning_rate = 0.05, min_samples_split = 10, min_samples_leaf = 5, max_depth = 2, random_state = 42)
+# gb = GradientBoostingRegressor(loss = 'huber', n_estimators = 1000, learning_rate = 0.05, min_samples_split = 10, min_samples_leaf = 5, max_depth = 2, random_state = 42)
 
-gb.fit(xTrain, yTrain)
+# gb.fit(xTrain, yTrain)
 
-# rf = pickle.load(rf_model)
-# gb = pickle.load(gb_model)
-# ada = pickle.load(ada_model)
+rf = pickle.load(rf_model)
+gb = pickle.load(gb_model)
+ada = pickle.load(ada_model)
 
 
 @app.route("/test_link")
@@ -181,7 +181,7 @@ def home():
     
     algorithm = request.form['algorithm']
     if(algorithm == 'Random Forest'):
-        pred = int(model.predict(input)[0])
+        pred = int(rf.predict(input)[0])
         algo = 'Random Forest'
     elif(algorithm == 'AdaBoost'):
         pred = int(ada.predict(input)[0])
